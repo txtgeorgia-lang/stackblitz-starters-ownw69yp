@@ -47,17 +47,17 @@ const INITIAL_VIDEOS: Video[] = [
 const INITIAL_EVENTS: ScheduleEvent[] = [
   {
     id: '1',
-    title: 'TXT ახალი ალბომის გამოშვება (Comeback)',
+    title: 'Perfec Storm გამოშვება',
     type: 'Comeback',
-    date: '2026-04-01 12:00',
+    date: '2026-11-16 13:00',
     description: 'მზად ხართ ახალი ქამბექისთვის, მოა!',
   },
   {
     id: '2',
-    title: 'Yeonjun-ის დაბადების დღე 🎂',
-    type: 'Birthday',
-    date: '2026-09-13 00:00',
-    description: 'ვულოცავთ ჩვენს საყვარელ წევრს!',
+    title: 'Angel Bite მუსიკალური ვიდეოს თიზერი',
+    type: 'Comeback',
+    date: '2026-11-12 19:00',
+    description: 'მზად ხართ თიზერის სანახავად?',
   },
 ];
 
