@@ -154,7 +154,7 @@ export default function Home() {
               <textarea
                 value={newPostContent}
                 onChange={(e) => setNewPostContent(e.target.value)}
-                placeholder="გაუზიარე აზრები სხვა მოაებს ქართულად..."
+                placeholder="გაუზიარე აზრები სხვა მოას ქართულად..."
                 className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-sky-500 resize-none h-24"
               />
               <div className="flex flex-col sm:flex-row justify-between items-center mt-3 gap-3">
@@ -212,42 +212,33 @@ export default function Home() {
         {/* --- VIDEOS TAB --- */}
         {activeTab === 'videos' && (
           <div className="space-y-6">
-            <div className="flex space-x-2 overflow-x-auto pb-2">
-              {['All', 'TO DO', 'Live', 'Vlog', 'Episode'].map(cat => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors ${
-                    selectedCategory === cat 
-                      ? 'bg-sky-500 text-white' 
-                      : 'bg-slate-900 text-slate-400 border border-slate-800 hover:text-white'
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
+            
+            {/* პირველი შოუ / ფლეილისტი */}
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg p-4">
+              <h3 className="text-lg font-bold text-slate-200 mb-3">📺 Talk X Today</h3>
+              <div className="aspect-video w-full bg-slate-950 rounded-xl overflow-hidden">
+                <iframe
+                  className="w-full h-full"
+                  src="https://youtube.com/playlist?list=PLpXCpOCJp-r-AmM2NGhxzDRwLuKSCZet-&si=FuZ2UI1c_oYFY-A8"
+                  title="Show 1"
+                  allowFullScreen
+                />
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {filteredVideos.map(video => (
-                <div key={video.id} className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg">
-                  <div className="aspect-video w-full bg-slate-950">
-                    <iframe
-                      className="w-full h-full"
-                      src={`https://www.youtube.com/embed/${video.youtubeId}`}
-                      title={video.title}
-                      allowFullScreen
-                    />
-                  </div>
-                  <div className="p-4">
-                    <span className="text-[10px] uppercase tracking-wider bg-sky-500/10 text-sky-400 px-2 py-0.5 rounded-md border border-sky-500/20">
-                      {video.category}
-                    </span>
-                    <h3 className="font-medium text-sm mt-2 text-slate-200 line-clamp-2">{video.title}</h3>
-                  </div>
-                </div>
-              ))}
+            {/* მეორე შოუ / ფლეილისტი */}
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg p-4">
+              <h3 className="text-lg font-bold text-slate-200 mb-3">📺 პულბათუ</h3>
+              <div className="aspect-video w-full bg-slate-950 rounded-xl overflow-hidden">
+                <iframe
+                  className="w-full h-full"
+                  src="https://youtube.com/playlist?list=PLpXCpOCJp-r9b5w4jmUB16_mZPRALD9Y8&si=JaIdEF33UbzRVtu6"
+                  title="Show 2"
+                  allowFullScreen
+                />
+              </div>
             </div>
+
           </div>
         )}
 
