@@ -219,7 +219,7 @@ export default function Home() {
               <div className="aspect-video w-full bg-slate-950 rounded-xl overflow-hidden">
                 <iframe
                   className="w-full h-full"
-                  src="https://youtube.com/playlist?list=PLpXCpOCJp-r-AmM2NGhxzDRwLuKSCZet-&si=FuZ2UI1c_oYFY-A8"
+                  src="https://www.youtube.com/embed/videoseries?list=PLpXCPoCjp-r-AmM2NGhxzDRwLuKSCZet-"
                   title="Show 1"
                   allowFullScreen
                 />
@@ -232,7 +232,7 @@ export default function Home() {
               <div className="aspect-video w-full bg-slate-950 rounded-xl overflow-hidden">
                 <iframe
                   className="w-full h-full"
-                  src="https://youtube.com/playlist?list=PLpXCpOCJp-r9b5w4jmUB16_mZPRALD9Y8&si=JaIdEF33UbzRVtu6"
+                  src="https://www.youtube.com/embed/videoseries?list=PLpXCPoCjp-r9b5w4jmUB16_mZPRALD9Y8"
                   title="Show 2"
                   allowFullScreen
                 />
