@@ -210,37 +210,83 @@ export default function Home() {
         )}
 
         {/* --- VIDEOS TAB --- */}
+       'use client';
+
+import React, { useState } from 'react';
+
+// საწყისი ვიდეოების სია (შეგიძლია აქ დაამატო შენი ვიდეოები)
+const INITIAL_VIDEOS = [
+  { id: '1', title: 'Talk X Today ეპიზოდი 1', youtubeId: 'pXCPoCjp-r-AmM2NGhxzDRwLuKSCZet-' },
+  { id: '2', title: 'Talk X Today ეპიზოდი 2', youtubeId: 'pXCPoCjp-r-AmM2NGhxzDRwLuKSCZet-' },
+  { id: '3', title: 'პულბათუ - ეპიზოდი 1', youtubeId: 'pXCPoCjp-r9b5w4jmUB16_mZPRALD9Y8' },
+];
+
+export default function Home() {
+  const [activeTab, setActiveTab] = useState('videos');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // ძებნის ლოგიკა
+  const filteredVideos = INITIAL_VIDEOS.filter((video) =>
+    video.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  return (
+    <main className="min-h-screen bg-slate-950 text-slate-100 p-6">
+      <div className="max-w-4xl mx-auto space-y-6">
+        
+        {/* ნავიგაციის ტაბები */}
+        <div className="flex gap-4 border-b border-slate-800 pb-4">
+          <button
+            onClick={() => setActiveTab('videos')}
+            className={`px-4 py-2 rounded-xl font-medium transition ${
+              activeTab === 'videos' ? 'bg-cyan-500 text-slate-950' : 'bg-slate-900 text-slate-300'
+            }`}
+          >
+            📺 ვიდეოები
+          </button>
+        </div>
+
+        {/* --- VIDEOS TAB --- */}
         {activeTab === 'videos' && (
           <div className="space-y-6">
             
-            {/* პირველი შოუ / ფლეილისტი */}
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg p-4">
-              <h3 className="text-lg font-bold text-slate-200 mb-3">📺 Talk X Today</h3>
-              <div className="aspect-video w-full bg-slate-950 rounded-xl overflow-hidden">
-                <iframe
-                  className="w-full h-full"
-                  src="https://www.youtube.com/embed/videoseries?list=PLpXCPoCjp-r-AmM2NGhxzDRwLuKSCZet-"
-                  title="Show 1"
-                  allowFullScreen
-                />
-              </div>
+            {/* Search Input */}
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="მოძებნე ვიდეო სათაურით..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition"
+              />
             </div>
 
-            {/* მეორე შოუ / ფლეილისტი */}
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg p-4">
-              <h3 className="text-lg font-bold text-slate-200 mb-3">📺 პულბათუ</h3>
-              <div className="aspect-video w-full bg-slate-950 rounded-xl overflow-hidden">
-                <iframe
-                  className="w-full h-full"
-                  src="https://www.youtube.com/embed/videoseries?list=PLpXCPoCjp-r9b5w4jmUB16_mZPRALD9Y8"
-                  title="Show 2"
-                  allowFullScreen
-                />
-              </div>
-            </div>
+            {/* ვიდეოების სია */}
+            {filteredVideos.length > 0 ? (
+              filteredVideos.map((video) => (
+                <div key={video.id} className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg p-4">
+                  <h3 className="text-lg font-bold text-slate-200 mb-3">📺 {video.title}</h3>
+                  <div className="aspect-video w-full bg-slate-950 rounded-xl overflow-hidden">
+                    <iframe
+                      className="w-full h-full"
+                      src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                      title={video.title}
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p className="text-center text-slate-500 py-8">ვიდეო ვერ მოიძებნა...</p>
+            )}
 
           </div>
         )}
+
+      </div>
+    </main>
+  );
+}
 
         {/* --- SCHEDULE TAB --- */}
         {activeTab === 'schedule' && (
